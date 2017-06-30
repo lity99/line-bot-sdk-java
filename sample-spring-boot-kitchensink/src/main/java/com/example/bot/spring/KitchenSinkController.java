@@ -240,7 +240,7 @@ public class KitchenSinkController {
 
         log.info("Got text message from {}: {}", replyToken, text);
         switch (text) {
-            case "profile": {
+            case ".profile": {
                 String userId = event.getSource().getUserId();
                 if (userId != null) {
                     lineMessagingClient
@@ -265,7 +265,7 @@ public class KitchenSinkController {
                 }
                 break;
             }
-            case "bye": {
+            case ".bye": {
                 Source source = event.getSource();
                 if (source instanceof GroupSource) {
                     this.replyText(replyToken, "Leaving group");
@@ -278,13 +278,13 @@ public class KitchenSinkController {
                 }
                 break;
             }
-            case "confirm": {
+            case ".confirm": {
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
-                        "Do it?",
-                        new MessageAction("Yes", "Yes!"),
-                        new MessageAction("No", "No!")
+                        "Is Nezzy best waifu?",
+                        new MessageAction("Yes", "Correct!"),
+                        new MessageAction("No", "Try again.")
                 );
-                TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
+                TemplateMessage templateMessage = new TemplateMessage("Nezzy Bot cannot display message on PC Line!", confirmTemplate);
                 this.reply(replyToken, templateMessage);
                 break;
             }
@@ -305,7 +305,7 @@ public class KitchenSinkController {
                                 new MessageAction("Say message",
                                                   "Rice=米")
                         ));
-                TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
+                TemplateMessage templateMessage = new TemplateMessage("Nezzy Bot cannot display message on PC Line!", buttonsTemplate);
                 this.reply(replyToken, templateMessage);
                 break;
             }
@@ -327,7 +327,7 @@ public class KitchenSinkController {
                                                           "Rice=米")
                                 ))
                         ));
-                TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
+                TemplateMessage templateMessage = new TemplateMessage("Nezzy Bot cannot display message on PC Line!", carouselTemplate);
                 this.reply(replyToken, templateMessage);
                 break;
             }
@@ -366,9 +366,9 @@ public class KitchenSinkController {
                 break;
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
-                this.replyText(
-                        replyToken,
-                        text
+                //this.replyText(
+                //        replyToken,
+                //        text
                 );
                 break;
         }
