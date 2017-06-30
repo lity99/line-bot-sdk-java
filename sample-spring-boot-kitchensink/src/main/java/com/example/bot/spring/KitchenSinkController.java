@@ -369,7 +369,7 @@ public class KitchenSinkController {
                 //this.replyText(
                 //        replyToken,
                 //        text
-                );
+                //);
                 break;
         }
     }
